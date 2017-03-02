@@ -1,0 +1,42 @@
+<h2>Select a Parking Slot</h2>
+<div *ngIf="selectedSpace">
+{{selectedSpace.id}}
+	<button style="float:right; margin-right:40px" (click)="refresh()">Refresh</button>
+	<div style="margin-left:20px" *ngFor="#p of selectedSpace.slots">
+	  <div [hidden]="!(p.status == 'available')" (click)="onSelect(p)" class="parking" [ngClass]="p.status">
+		 <span class="parking-title">{{p.name}}</span>
+	  </div>
+	
+	  <div [hidden]="(p.status == 'available')" (click)="onSelect(p)" class="parking" [ngClass]="p.status">
+		  <i class="fa fa-car fa-6" style="font-size: 7em" aria-hidden="true"></i> 
+		 <span class="parking-title">{{p.name}}</span>
+	  </div>	 
+	</div>
+		
+	<div style="margin-top:20px; clear: both">  </div>
+	
+	<form class="form-horizontal bv-form" style="width:400px; margin-left: 250px">
+		<div *ngIf="reservation.selectedSlot" style="clear:left; margin-top:30px">
+			<label>Selected Slot: </label>
+			<span class="form-control" style="border: blue 2px solid;" > {{reservation.selectedSlot.name}}</span>
+		</div>
+		<div>
+			<label>Select From Date: </label>
+			<input class="form-control" type="date" [(ngModel)]="reservation.from"/>
+		</div>
+
+		<div>
+			<label>Select To Date: </label>
+			<input class="form-control"  type="date" [(ngModel)]="reservation.to"/>
+		</div>
+
+		<div>
+			<label>Hourly Rate: </label>
+			<span class="form-control" >{{selectedSpace.rate}}</span>
+		</div>
+		<div style="margin-top:20px">
+			<button (click)="save()">Save</button>
+			<button (click)="openNavigationApp(selectedSpace)">Open Navigation!</button>
+		</div>
+	</form>
+</div>

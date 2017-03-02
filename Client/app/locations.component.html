@@ -1,0 +1,21 @@
+<h2>My Locations</h2>
+<ul class="locations">
+  <li *ngFor="let location of locations" (click)="onSelect(location)" [class.selected]="location === selectedLocation">
+    <span class="location-element">
+      <span class="badge">{{location.id}}</span> {{location.name}}
+    </span>
+    <button class="delete-button" (click)="delete(location, $event)">Delete</button>
+  </li>
+</ul>
+
+<button (click)="addLocation()">Add New Location</button>
+<div *ngIf="addingLocation">
+  <my-location-detail (close)="close($event)"></my-location-detail>
+</div>
+
+<div *ngIf="selectedLocation">
+  <h2>
+    {{selectedLocation.name | uppercase}} is my location
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

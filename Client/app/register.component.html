@@ -1,0 +1,54 @@
+<h3>Register Your Space</h3>
+
+<div class="grid grid-pad">
+  <div *ngFor="let location of locations" (click)="gotoDetail(location)" class="col-1-4">
+    <div class="module location">
+      <h4>{{location.name}}</h4>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:20px; clear: both">  </div>
+
+<div *ngIf="location">
+	
+  <h2 style="margin-left:250px">Add your space to {{location.name}} </h2>
+
+	<form class="form-horizontal bv-form" style="width:400px; margin-left: 250px">
+  <div>
+    <label>Owner: </label>
+    <input class="form-control" [(ngModel)]="spaceDetails.owner"/>
+  </div>
+	 	
+	
+  <div>
+    <label>Space Id: </label>
+	<input class="form-control" readonly [(ngModel)]="spaceDetails.id" />
+  </div>	  
+  <div>
+    <label>Space name: </label>
+    <input class="form-control" [(ngModel)]="spaceDetails.name" placeholder="name" />
+  </div>
+   <div>
+    <label>Hourly Rate: </label>
+    <input class="form-control" [(ngModel)]="spaceDetails.rate" placeholder="10" />
+  </div>	
+  <div>
+    <label>Number Of Parking slots: </label>
+    <input class="form-control" [(ngModel)]="spaceDetails.slotsCount"/>
+  </div>
+
+   <div>
+    <label>Cords: </label>
+    <textarea class="form-control" [(ngModel)]="spaceDetails.cordsstr"  style="height: 50px; width:500px"></textarea>
+   </div>
+<div style="margin-top:20px">
+
+<button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+  <button (click)="reset()">Reset</button>
+
+</div>
+ 		</form>
+	
+</div>

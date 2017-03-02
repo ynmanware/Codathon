@@ -1,0 +1,33 @@
+ 
+
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+ <h1 style="text-align: center">{{title}}</h1>
+ <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+		  <a [routerLink]="['Dashboard']">Reserve (Customers)</a>
+        </li>
+        <li>
+          <a [routerLink]="['Register']">Register (Owners)</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>	
+
+<div style="margin-top:100px;">  </div>
+
+<router-outlet></router-outlet>
+
+<div style="margin-top:20px; clear: both">  </div>
+
+<div style="margin-top:20px; clear: both" id="mapid"></div>
